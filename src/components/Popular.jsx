@@ -16,7 +16,7 @@ export default class Popular extends Component {
       .then((popular) => {
         console.log("popular", popular);
         this.setState({
-          movies: popular.results,
+          movies: popular.results, 
         });
       })
       .catch((error) => console.error(error));
