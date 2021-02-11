@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Card from "./Card";
 
 export default class Popular extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ export default class Popular extends Component {
       .then((popular) => {
         console.log("popular", popular);
         this.setState({
-          movies: popular.results, 
+          movies: popular.results,
         });
       })
       .catch((error) => console.error(error));
@@ -26,8 +27,20 @@ export default class Popular extends Component {
     console.log("movie=", this.state.movies);
 
     return (
-      <div>
-        <h1>Popular</h1>
+      <div className='container d-flex flex-column justify-content-center'>
+        <h1 className='text-center'>Popular</h1>
+        <div className='row'>
+          {this.state.movies.map((film) => {
+            return (
+              <Card
+                img={`https://image.tmdb.org/t/p/w300/${film.backdrop_path}`}
+                title={film.title}
+                description={film.overview}
+                date={film.release_date}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }

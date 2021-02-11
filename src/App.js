@@ -43,15 +43,9 @@ class App extends React.Component {
                   </Link>
                 </li>
                 <li className='nav-item'>
-                  {movies.map((movie) => {
-                    return (
-                      <span class='navbar-brand mb-0 h1'>
-                        <Link className='nav-link' to={`/popular/${movies.id}`}>
-                          {movie.title} Popular
-                        </Link>
-                      </span>
-                    );
-                  })}
+                  <Link className='nav-link' to='/popular'>
+                    Popular
+                  </Link>
                 </li>
                 <li className='nav-item'>
                   <Link className='nav-link' to='/popularBattle'>
