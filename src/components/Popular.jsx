@@ -28,7 +28,7 @@ export default class Popular extends Component {
 
     return (
       <div className='container d-flex flex-column justify-content-center'>
-        <h1 className='text-center'>Popular</h1>
+        <h1 className='text-center tabTitle'>Popular</h1>
         <div className='row'>
           {this.state.movies.map((film) => {
             return (

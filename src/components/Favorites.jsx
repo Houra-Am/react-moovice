@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Card from "./Card"
 
 export default class Favorites extends Component {
   constructor(props) {
@@ -8,6 +9,13 @@ export default class Favorites extends Component {
       favIDs: this.getStorage(),
     };
   }
+
+  
+componentDidMount(){
+  this.state.favIDs.map((id) => {
+    this.getMovies(id)
+  })
+}
 
   getMovies = (id) => {
     fetch(
@@ -28,15 +36,31 @@ export default class Favorites extends Component {
   getStorage = () => {
     return (
       //parse --- > from string to array
-      JSON.parse(localStorage.getItem("favorites_id"))
+      JSON.parse(localStorage.getItem("favorites_id") || "[]"),
+      JSON.parse(localStorage.getItem("favorites_weekly_id") || "[]")
     );
   };
 
+ 
+
   render() {
     return (
-      <div>
-        <h1>Favorites</h1>
+      <div className='container d-flex flex-column justify-content-center'>
+      <h1 className='text-center tabTitle'>Favorites</h1>
+      <div className='row'>
+        {this.state.favIDs.length === 0 && <h2 className="text-center noFav">Vous n'avez pas encore de favoris !</h2>}
+        {this.state.movies.map((film) => {
+          return (
+            <Card
+              img={`https://image.tmdb.org/t/p/w300/${film.poster_path}`}
+              title={film.title}
+              description={film.overview}
+              date={film.release_date}
+            />
+          );
+        })}
       </div>
+    </div>
     );
   }
 }

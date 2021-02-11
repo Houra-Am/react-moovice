@@ -45,7 +45,7 @@ export default class PopularBattle extends Component {
     }
     return (
       <div className='container d-flex flex-column justify-content-center'>
-        <h1 className='text-center'>Popular Battle</h1>
+        <h1 className='text-center tabTitle'>Popular Battle</h1>
         {this.state.movies.length > 1 &&
           this.state.currentBattle < this.state.movies.length && (
             <div className='row'>
@@ -97,7 +97,7 @@ export default class PopularBattle extends Component {
 
         {this.state.currentBattle === this.state.movies.length && (
           <div>
-            <h1>Vous avez parcouru tous les films !</h1>
+            <h2 className="text-center">Vous avez parcouru tous les films !</h2>
           </div>
         )}
       </div>

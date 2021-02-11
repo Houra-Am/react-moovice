@@ -6,3 +6,12 @@
 .row {
   margin: 0px !important;
 }
+
+.noFav{
+  margin-top: 32px;
+}
+
+.tabTitle{
+  margin-top: 32px;
+  margin-bottom: 40px;
+}
