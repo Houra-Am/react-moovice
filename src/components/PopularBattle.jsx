@@ -41,66 +41,62 @@ export default class PopularBattle extends Component {
       return <h1>LOADING</h1>;
     }
     return (
-      <div className='row'>
-        <div className='container d-flex flex-column justify-content-center'>
-          <h1 className='text-center'>Popular Battle</h1>
-          {this.state.movies.length > 1 &&
-            this.state.currentBattle < this.state.movies.length && (
-              <div className='row'>
-                <div
-                  onClick={(event) =>
-                    this.handleClick(
-                      event,
-                      this.state.movies[this.state.currentBattle].id
-                    )
-                  }>
-                  <Card
-                    img={`https://image.tmdb.org/t/p/w300/${
-                      this.state.movies[this.state.currentBattle].poster_path
-                    }`}
-                    title={this.state.movies[this.state.currentBattle].title}
-                    description={
-                      this.state.movies[this.state.currentBattle].overview
-                    }
-                    date={
-                      this.state.movies[this.state.currentBattle].release_date
-                    }
-                  />
-                </div>
-
-                <div
-                  onClick={(event) =>
-                    this.handleClick(
-                      event,
-                      this.state.movies[this.state.currentBattle].id
-                    )
-                  }>
-                  <Card
-                    img={`https://image.tmdb.org/t/p/w300/${
-                      this.state.movies[this.state.currentBattle + 1]
-                        .poster_path
-                    }`}
-                    title={
-                      this.state.movies[this.state.currentBattle + 1].title
-                    }
-                    description={
-                      this.state.movies[this.state.currentBattle + 1].overview
-                    }
-                    date={
-                      this.state.movies[this.state.currentBattle + 1]
-                        .release_date
-                    }
-                  />
-                </div>
+      <div className='container d-flex flex-column justify-content-center'>
+        <h1 className='text-center'>Popular Battle</h1>
+        {this.state.movies.length > 1 &&
+          this.state.currentBattle < this.state.movies.length && (
+            <div className='row'>
+              <div
+                className='col-6'
+                onClick={(event) =>
+                  this.handleClick(
+                    event,
+                    this.state.movies[this.state.currentBattle].id
+                  )
+                }>
+                <Card
+                  img={`https://image.tmdb.org/t/p/w300/${
+                    this.state.movies[this.state.currentBattle].poster_path
+                  }`}
+                  title={this.state.movies[this.state.currentBattle].title}
+                  description={
+                    this.state.movies[this.state.currentBattle].overview
+                  }
+                  date={
+                    this.state.movies[this.state.currentBattle].release_date
+                  }
+                />
               </div>
-            )}
 
-          {this.state.currentBattle === this.state.movies.length && (
-            <div>
-              <h1>Vous avez parcouru tous les films !</h1>
+              <div
+                className='col-6'
+                onClick={(event) =>
+                  this.handleClick(
+                    event,
+                    this.state.movies[this.state.currentBattle].id
+                  )
+                }>
+                <Card
+                  img={`https://image.tmdb.org/t/p/w300/${
+                    this.state.movies[this.state.currentBattle + 1].poster_path
+                  }`}
+                  title={this.state.movies[this.state.currentBattle + 1].title}
+                  description={
+                    this.state.movies[this.state.currentBattle + 1].overview
+                  }
+                  date={
+                    this.state.movies[this.state.currentBattle + 1].release_date
+                  }
+                />
+              </div>
             </div>
           )}
-        </div>
+
+        {this.state.currentBattle === this.state.movies.length && (
+          <div>
+            <h1>Vous avez parcouru tous les films !</h1>
+          </div>
+        )}
       </div>
     );
   }
