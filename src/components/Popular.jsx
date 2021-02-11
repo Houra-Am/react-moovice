@@ -33,7 +33,7 @@ export default class Popular extends Component {
           {this.state.movies.map((film) => {
             return (
               <Card
-                img={`https://image.tmdb.org/t/p/w300/${film.backdrop_path}`}
+                img={`https://image.tmdb.org/t/p/w300/${film.poster_path}`}
                 title={film.title}
                 description={film.overview}
                 date={film.release_date}
