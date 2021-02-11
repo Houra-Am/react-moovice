@@ -18,7 +18,10 @@ export default class PopularBattle extends Component {
       currentBattle: this.state.currentBattle + 2,
       favorites_id: favorites,
     });
-    localStorage.setItem("favorites_id", this.state.favorites_id);
+    localStorage.setItem(
+      "favorites_id",
+      JSON.stringify(this.state.favorites_id)
+    );
   };
 
   componentDidMount() {
