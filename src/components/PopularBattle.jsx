@@ -7,10 +7,18 @@ export default class PopularBattle extends Component {
     this.state = {
       movies: [],
       currentBattle: 0,
+      favorites_id: [],
     };
   }
-  onClick = (e) => {
-      this.setState({currentBattle: currentBattle + 1})
+
+  handleClick = (event, id) => {
+    let favorites = this.state.favorites_id;
+    favorites.push(id);
+    this.setState({
+      currentBattle: this.state.currentBattle + 2,
+      favorites_id: favorites,
+    });
+    localStorage.setItem("favorites_id", this.state.favorites_id);
   };
 
   componentDidMount() {
@@ -36,16 +44,24 @@ export default class PopularBattle extends Component {
     console.log(film1);
     return (
       <div>
-        <div className="container d-flex flex-column justify-content-center">
-          <h1 className="text-center">Popular</h1>
-          <div className="row">
-            <Card
-              img={`https://image.tmdb.org/t/p/w300/${film1.poster_path}`}
-              title={film1.title}
-              description={film1.overview}
-              date={film1.release_date}
-              onClick={}
-            />
+        <div className='container d-flex flex-column justify-content-center'>
+          <h1 className='text-center'>Popular Battle</h1>
+          <div className='row'>
+            <div
+              onClick={(event) =>
+                this.handleClick(
+                  event,
+                  this.state.movies[this.state.currentBattle].id
+                )
+              }>
+              <Card
+                img={`https://image.tmdb.org/t/p/w300/${film1.poster_path}`}
+                title={film1.title}
+                description={film1.overview}
+                date={film1.release_date}
+              />
+            </div>
+
             <Card
               img={`https://image.tmdb.org/t/p/w300/${film2.poster_path}`}
               title={film2.title}

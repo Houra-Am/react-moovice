@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
 import Favorites from "./components/Favorites";
 import Home from "./components/Home";
